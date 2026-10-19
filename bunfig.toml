@@ -1,0 +1,11 @@
+[install]
+# Save exact dependency resolutions in the lockfile.
+saveTextLockfile = true
+
+# Supply-chain protection: avoid installing package versions
+# published less than 24 hours ago.
+minimumReleaseAge = 86400
+
+# Add exceptions only when a dependency genuinely requires them.
+# Review and verify the package before adding an exception.
+# minimumReleaseAgeExcludes = ["package-name"]
