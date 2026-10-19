@@ -185,15 +185,3 @@ export function PageHero({
     </section>
   );
 }
-
-export const meta = (title: string, description: string) => [
-  { title },
-  { name: "description", content: description },
-  { property: "og:title", content: title },
-  { property: "og:description", content: description },
-  { property: "og:image", content: logo },
-  { property: "og:image:alt", content: "Muslim Taekwondo Club ISB logo" },
-  { name: "twitter:image", content: logo },
-  { property: "og:type", content: "website" },
-  { name: "twitter:card", content: "summary_large_image" },
-];
