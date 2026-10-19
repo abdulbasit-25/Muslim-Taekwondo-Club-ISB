@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { faqs } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 import {
   Accordion,
   AccordionContent,
@@ -10,9 +11,11 @@ import {
 
 export const Route = createFileRoute("/parents")({
   head: () => ({
+    links: [canonicalLink("/parents")],
     meta: meta(
       "Parents' Guide & FAQ | Muslim Taekwondo Club ISB",
       "Safety, supervision, uniforms, fees and the questions parents ask about Taekwondo classes for children in Islamabad.",
+      "/parents",
     ),
   }),
   component: Parents,
