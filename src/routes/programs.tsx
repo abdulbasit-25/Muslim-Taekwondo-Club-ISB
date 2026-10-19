@@ -1,13 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { programs } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/programs")({
   head: () => ({
+    links: [canonicalLink("/programs")],
     meta: meta(
       "Programs | Muslim Taekwondo Club ISB",
       "Taekwondo, kickboxing, self-defense, MMA and professional boxing classes in Islamabad for kids, teens and adults.",
+      "/programs",
     ),
   }),
   component: Programs,
