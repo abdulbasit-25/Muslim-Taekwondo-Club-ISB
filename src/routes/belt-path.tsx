@@ -1,13 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { belts } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/belt-path")({
   head: () => ({
+    links: [canonicalLink("/belt-path")],
     meta: meta(
       "Belt Path | Muslim Taekwondo Club ISB Taekwondo Curriculum",
       "From white belt to black belt: see what each Taekwondo belt requires at Muslim Taekwondo Club ISB in Islamabad.",
+      "/belt-path",
     ),
   }),
   component: BeltPath,
