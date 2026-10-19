@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Clock, Facebook, MapPin, Navigation } from "lucide-react";
 import { branches, club } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/branches")({
   head: () => ({
+    links: [canonicalLink("/branches")],
     meta: meta(
       "Branches & Timings | Muslim Taekwondo Club ISB",
       "Taekwondo classes at Taramri Chowk / Alipur, Ghauri Town and Gulberg Greens, Islamabad. Evening classes 5:00–9:30 PM.",
+      "/branches",
     ),
   }),
   component: Branches,
