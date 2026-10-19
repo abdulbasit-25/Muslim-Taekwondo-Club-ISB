@@ -3,13 +3,15 @@ import { ArrowRight, Award, MapPin, ShieldCheck, Users } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import kids from "@/assets/kids.jpg";
 import { achievements, branches, club, programs } from "@/content/site";
-import { meta } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [canonicalLink("/")],
     meta: meta(
       "Muslim Taekwondo Club ISB | Taekwondo Classes in Islamabad — Book a Free Trial",
       "Taekwondo, kickboxing, self-defense, MMA and boxing in Taramri Chowk, Ghauri Town and Gulberg Greens. Led by 4th Dan coach Shahab ud Din.",
+      "/",
     ),
   }),
   component: Home,
