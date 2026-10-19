@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://muslim-taekwondo-club-isb.vercel.app/sitemap.xml
