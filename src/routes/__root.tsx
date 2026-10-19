@@ -10,10 +10,15 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import logo from "@/assets/logo.jpg";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteLayout } from "@/components/site/Layout";
+import { club } from "@/content/site";
+import { meta, siteUrl, socialImageUrl } from "@/lib/seo";
+
+const siteTitle = "Muslim Taekwondo Club ISB — Taekwondo & Martial Arts in Islamabad";
+const siteDescription =
+  "Muslim Taekwondo Club ISB in Islamabad. Taekwondo, kickboxing, self-defense, MMA and boxing since 2015.";
 
 function NotFoundComponent() {
   return (
@@ -80,25 +85,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Muslim Taekwondo Club ISB — Taekwondo & Martial Arts in Islamabad" },
       {
-        name: "description",
-        content:
-          "Muslim Taekwondo Club ISB in Islamabad. Taekwondo, kickboxing, self-defense, MMA and boxing since 2015.",
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "SportsOrganization",
+          name: club.name,
+          url: `${siteUrl}/`,
+          logo: `${siteUrl}/android-chrome-512x512.png`,
+          image: socialImageUrl,
+          description: siteDescription,
+          foundingDate: String(club.since),
+          sport: "Taekwondo",
+          areaServed: {
+            "@type": "City",
+            name: "Islamabad",
+          },
+          telephone: club.phoneIntl,
+          email: club.email,
+          sameAs: [club.facebook],
+        },
       },
-      {
-        property: "og:title",
-        content: "Muslim Taekwondo Club ISB — Taekwondo & Martial Arts in Islamabad",
-      },
-      {
-        property: "og:description",
-        content:
-          "Muslim Taekwondo Club ISB in Islamabad. Taekwondo, kickboxing, self-defense, MMA and boxing since 2015.",
-      },
-      { property: "og:image", content: logo },
-      { property: "og:image:alt", content: "Muslim Taekwondo Club ISB logo" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: logo },
+      ...meta(siteTitle, siteDescription, "/"),
     ],
     links: [
       {
@@ -111,7 +118,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap",
       },
-      { rel: "icon", href: logo, type: "image/jpeg" },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { rel: "icon", href: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,
