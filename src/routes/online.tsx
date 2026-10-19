@@ -1,13 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MonitorPlay, Radio, Layers } from "lucide-react";
 import { waLink } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/online")({
   head: () => ({
+    links: [canonicalLink("/online")],
     meta: meta(
       "Online Taekwondo Classes | Muslim Taekwondo Club ISB",
       "Live online Taekwondo and fitness sessions plus on-demand lessons organised by belt level from Muslim Taekwondo Club ISB in Islamabad.",
+      "/online",
     ),
   }),
   component: Online,
