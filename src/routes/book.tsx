@@ -3,16 +3,19 @@ import { useState } from "react";
 import { z } from "zod";
 import { MessageCircle } from "lucide-react";
 import { branches, programs, waLink } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 const search = z.object({ program: z.string().optional() });
 
 export const Route = createFileRoute("/book")({
   validateSearch: search,
   head: () => ({
+    links: [canonicalLink("/book")],
     meta: meta(
       "Book a Free Trial | Muslim Taekwondo Club ISB",
       "Book a free Taekwondo or martial arts trial class with Muslim Taekwondo Club ISB and confirm on WhatsApp.",
+      "/book",
     ),
   }),
   component: Book,
