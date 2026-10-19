@@ -1,12 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { coaches } from "@/content/site";
-import { PageHero, meta } from "@/components/site/Layout";
+import { PageHero } from "@/components/site/Layout";
+import { canonicalLink, meta } from "@/lib/seo";
 
 export const Route = createFileRoute("/coaches")({
   head: () => ({
+    links: [canonicalLink("/coaches")],
     meta: meta(
       "Coaches | Muslim Taekwondo Club ISB",
       "Meet head coach Shahab ud Din (4th Dan, Kukkiwon, WT international coach) and the Muslim Taekwondo Club ISB coaching team.",
+      "/coaches",
     ),
   }),
   component: Coaches,
